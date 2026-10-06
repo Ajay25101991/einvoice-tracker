@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Global e-invoicing mandate tracker: go-live dates, waves and deadlines from 2025 to 2028.">
-<title>E-Invoicing Mandate Tracker</title>
+<meta name="description" content="E-Invoice GoLive Tracker: global e-invoicing go-live dates, waves and deadlines from 2025 to 2028.">
+<title>E-Invoice GoLive Tracker</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -169,7 +169,7 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
   <section class="hero">
     <div>
       <div class="label">Suntech · Compliance watch</div>
-      <h1>E-Invoicing Mandate Tracker</h1>
+      <h1>E-Invoice GoLive Tracker</h1>
       <p>Every go-live, wave and deadline from 2025 to 2028, counted down from today. Refreshed every Monday, Wednesday and Saturday at 1 PM IST.</p>
       <div class="kpis" id="kpis"></div>
     </div>
@@ -270,7 +270,7 @@ async function setupExport(){
       ws["!cols"]=[12,7,22,7,13,40,70,13,11,15].map(w=>({wch:w}));
       ws["!autofilter"]={ref:ws["!ref"]};
       D.forEach((e,i)=>{ws[XLSX.utils.encode_cell({r:i+1,c:0})]={t:"n",v:(Date.UTC(e.d.getFullYear(),e.d.getMonth(),e.d.getDate())-Date.UTC(1899,11,30))/864e5,z:"dd-mmm-yyyy"}});
-      const info=XLSX.utils.aoa_to_sheet([["E-Invoicing Mandate Tracker"],[],["Exported",fmt(new Date())],["Data refreshed",fmt(pd(RAW.refreshed))],
+      const info=XLSX.utils.aoa_to_sheet([["E-Invoice GoLive Tracker"],[],["Exported",fmt(new Date())],["Data refreshed",fmt(pd(RAW.refreshed))],
         
         [],["Milestones",D.length],["Still ahead",D.filter(e=>dleft(e)>=0).length],
         [],["Note","Consultation dates are indicated, not legislated. Confirm with the tax authority before committing a client go-live."]]);
@@ -278,7 +278,7 @@ async function setupExport(){
       const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,"Milestones");XLSX.utils.book_append_sheet(wb,info,"About");
       const buf=XLSX.write(wb,{bookType:"xlsx",type:"array"});
       const t=new Date(),stamp=t.getFullYear()+String(t.getMonth()+1).padStart(2,"0")+String(t.getDate()).padStart(2,"0");
-      await dl.save({filename:"EInvoice_Mandate_Tracker_"+stamp+".xlsx",data:buf});
+      await dl.save({filename:"EInvoice_GoLive_Tracker_"+stamp+".xlsx",data:buf});
       msg.textContent="Saved";
     }catch(err){const c=err&&err.code;
       if(c==="declined")msg.textContent="";

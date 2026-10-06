@@ -1,4 +1,4 @@
-# E-Invoicing Mandate Tracker
+# E-Invoice GoLive Tracker
 
 Global e-invoicing go-live dates, waves and deadlines from 2025 to 2028.
 
