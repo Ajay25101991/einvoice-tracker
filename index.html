@@ -163,7 +163,6 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
 
 <div class="wrap">
   <div class="source">
-    <span>Source: <a href="https://www.einvoice.global/calendar" target="_blank" rel="noopener">einvoice.global/calendar</a> <span class="role">updated <span id="srcUpd">04 Oct 2026</span></span></span>
     <span class="meta" id="refUpd">Refreshed 06 Oct 2026</span>
   </div>
 
@@ -208,7 +207,7 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
   <textarea id="cpyBox" hidden readonly aria-label="Table text to copy"></textarea>
   <main class="ledger" id="list"><div class="loading">Loading milestones…</div></main>
 
-  <footer>Statuses as published by einvoice.global. "Consultation" dates are indicated, not legislated. Confirm with the tax authority before committing a client go-live.</footer>
+  <footer>"Consultation" dates are indicated, not legislated. Confirm with the tax authority before committing a client go-live.</footer>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
@@ -227,13 +226,11 @@ const fmt=d=>String(d.getDate()).padStart(2,"0")+" "+MON[d.getMonth()]+" "+d.get
 const dleft=e=>Math.round((e.d-today)/864e5);
 const dayCls=n=>n<0?"":n<=30?"hot":"ahead";
 const dayTxt=n=>n<0?Math.abs(n)+"d ago":n===0?"Today":n+" days";
-const brief=cc=>"https://www.einvoice.global/country/"+cc.toLowerCase();
 let D=[],fs="",LI=null;const OPEN=new Map();
 
 function boot(data){
   RAW=data;
   D=data.milestones.map(m=>({...m,d:pd(m.date),r:REG[m.cc]||"Other",n:NAME[m.cc]||m.cc})).sort((a,b)=>a.d-b.d);
-  document.getElementById("srcUpd").textContent=fmt(pd(data.sourceUpdated));
   document.getElementById("refUpd").textContent="Refreshed "+fmt(pd(data.refreshed));
 
   const fut=D.filter(e=>dleft(e)>=0),n90=fut.filter(e=>dleft(e)<=90);
@@ -274,7 +271,7 @@ async function setupExport(){
       ws["!autofilter"]={ref:ws["!ref"]};
       D.forEach((e,i)=>{ws[XLSX.utils.encode_cell({r:i+1,c:0})]={t:"n",v:(Date.UTC(e.d.getFullYear(),e.d.getMonth(),e.d.getDate())-Date.UTC(1899,11,30))/864e5,z:"dd-mmm-yyyy"}});
       const info=XLSX.utils.aoa_to_sheet([["E-Invoicing Mandate Tracker"],[],["Exported",fmt(new Date())],["Data refreshed",fmt(pd(RAW.refreshed))],
-        ["Source","https://www.einvoice.global/calendar"],["Source updated",fmt(pd(RAW.sourceUpdated))],
+        
         [],["Milestones",D.length],["Still ahead",D.filter(e=>dleft(e)>=0).length],
         [],["Note","Consultation dates are indicated, not legislated. Confirm with the tax authority before committing a client go-live."]]);
       info["!cols"]=[{wch:24},{wch:70}];
