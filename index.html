@@ -94,19 +94,20 @@ a:hover{text-decoration:underline}
 .seg button{font:inherit;font-size:13px;font-weight:500;border:1px solid var(--line);background:var(--surface);color:var(--muted);padding:6px 12px;border-radius:999px;cursor:pointer}
 .seg button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--surface)}
 .controls input[type=search],.controls select{font:inherit;font-size:14px;padding:7px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink)}
-.controls input[type=search]{flex:1 1 140px;min-width:0}
+.controls input[type=search]{flex:1 1 180px;min-width:0}
 .toggle{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);cursor:pointer}
 .toggle input{accent-color:var(--accent)}
 .xbtn{font:inherit;font-size:13px;font-weight:600;border:0;background:var(--urgent);color:#fff;padding:8px 14px;border-radius:999px;cursor:pointer}
 .xbtn:hover{filter:brightness(1.07)}
 .xbtn:disabled{opacity:.6;cursor:default}
-.actions{display:flex;gap:8px;align-items:center;position:relative}
+.actions{display:flex;gap:8px;align-items:center;position:relative;margin-left:auto}
 .cbtn{font:inherit;font-size:13px;font-weight:600;border:1.5px solid var(--urgent);background:var(--surface);color:var(--urgent);padding:7px 14px;border-radius:999px;cursor:pointer;white-space:nowrap}
 .cbtn:hover{background:var(--urgent-soft)}
 #cpyBox{width:100%;height:160px;font-family:var(--f-mono);font-size:12px;border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--surface);color:var(--ink)}
 .xbtn{white-space:nowrap}
 .xmsg{position:absolute;right:0;top:calc(100% + 4px);white-space:nowrap;font-size:12px;color:var(--muted)}
-.count{margin-left:auto;font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.brk{flex-basis:100%;height:0}
+.count{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
 button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
 .ledger{display:flex;flex-direction:column;gap:18px}
@@ -187,7 +188,9 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
       <option value="">All regions</option>
       <option>GCC</option><option>Europe</option><option>Asia-Pacific</option><option>Americas</option><option>Africa</option>
     </select>
+    <select id="country" aria-label="Country"><option value="">All countries</option></select>
     <input id="q" type="search" placeholder="Search" aria-label="Search milestones">
+    <span class="brk" aria-hidden="true"></span>
     <label class="toggle"><input id="past" type="checkbox"> Show past</label>
     <span class="count" id="count"></span>
     <span class="actions"><button id="cpy" class="cbtn">Copy for Excel</button><button id="xls" class="xbtn" hidden>Export to Excel</button><span class="xmsg" id="xmsg" role="status"></span></span>
@@ -230,6 +233,8 @@ let D=[],fs="",LI=null;const OPEN=new Map();
 
 function boot(data){
   RAW=data;
+  const csel=document.getElementById("country"),seen=[...new Set(data.milestones.map(m=>m.cc))].map(cc=>[cc,NAME[cc]||cc]).sort((a,b)=>a[1].localeCompare(b[1]));
+  csel.innerHTML='<option value="">All countries</option>'+seen.map(([cc,n])=>`<option value="${cc}">${esc(n)}</option>`).join("");
   D=data.milestones.map(m=>({...m,d:pd(m.date),r:REG[m.cc]||"Other",n:NAME[m.cc]||m.cc})).sort((a,b)=>a.d-b.d);
   document.getElementById("refUpd").textContent="Refreshed "+fmt(pd(data.refreshed));
 
@@ -264,21 +269,18 @@ async function setupExport(){
     if(!D.length)return;
     b.disabled=true;msg.textContent="";
     try{
-      const rows=D.map(e=>{const n=dleft(e);return {"Date":e.d,"Year":e.d.getFullYear(),"Country":e.n,"Code":e.cc,"Region":e.r,"Milestone":e.title,"Detail":e.detail,
-        "Status":e.status.charAt(0).toUpperCase()+e.status.slice(1),"Days to go":n<0?"":n,"Timing":n<0?"Past":n<=30?"Within 30 days":n<=90?"Within 90 days":"Later"}});
-      const ws=XLSX.utils.json_to_sheet(rows);
-      ws["!cols"]=[12,7,22,7,13,40,70,13,11,15].map(w=>({wch:w}));
-      ws["!autofilter"]={ref:ws["!ref"]};
-      D.forEach((e,i)=>{ws[XLSX.utils.encode_cell({r:i+1,c:0})]={t:"n",v:(Date.UTC(e.d.getFullYear(),e.d.getMonth(),e.d.getDate())-Date.UTC(1899,11,30))/864e5,z:"dd-mmm-yyyy"}});
+      const wb=XLSX.utils.book_new();
+      if(filterActive()){const sub=D.filter(matches);XLSX.utils.book_append_sheet(wb,milestoneSheet(sub),"Filtered view")}
+      XLSX.utils.book_append_sheet(wb,milestoneSheet(D),"All milestones");
+      XLSX.utils.book_append_sheet(wb,countrySummary(),"By country");
       const info=XLSX.utils.aoa_to_sheet([["E-Invoice GoLive Tracker"],[],["Exported",fmt(new Date())],["Data refreshed",fmt(pd(RAW.refreshed))],
-        
-        [],["Milestones",D.length],["Still ahead",D.filter(e=>dleft(e)>=0).length],
+        ["Filter applied",filterActive()?filterLabel():"None"],[],["Milestones",D.length],["Countries",new Set(D.map(e=>e.cc)).size],["Still ahead",D.filter(e=>dleft(e)>=0).length],
         [],["Note","Consultation dates are indicated, not legislated. Confirm with the tax authority before committing a client go-live."]]);
-      info["!cols"]=[{wch:24},{wch:70}];
-      const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,"Milestones");XLSX.utils.book_append_sheet(wb,info,"About");
+      info["!cols"]=[{wch:24},{wch:70}];XLSX.utils.book_append_sheet(wb,info,"About");
       const buf=XLSX.write(wb,{bookType:"xlsx",type:"array"});
       const t=new Date(),stamp=t.getFullYear()+String(t.getMonth()+1).padStart(2,"0")+String(t.getDate()).padStart(2,"0");
-      await dl.save({filename:"EInvoice_GoLive_Tracker_"+stamp+".xlsx",data:buf});
+      const ctyTag=filters().cty?"_"+filters().cty:"";
+      await dl.save({filename:"EInvoice_GoLive_Tracker"+ctyTag+"_"+stamp+".xlsx",data:buf});
       msg.textContent="Saved";
     }catch(err){const c=err&&err.code;
       if(c==="declined")msg.textContent="";
@@ -289,26 +291,44 @@ async function setupExport(){
   });
 }
 setupExport();
-function tableTSV(){
+function tableTSV(list){
   const head=["Date","Year","Country","Code","Region","Milestone","Detail","Status","Days to go","Timing"];
   const clean=v=>String(v).replace(/[\t\r\n]+/g," ");
-  const lines=D.map(e=>{const n=dleft(e);return [fmt(e.d),e.d.getFullYear(),e.n,e.cc,e.r,e.title,e.detail,e.status.charAt(0).toUpperCase()+e.status.slice(1),n<0?"":n,n<0?"Past":n<=30?"Within 30 days":n<=90?"Within 90 days":"Later"].concat([]).map(clean).join("\t")});
+  const lines=list.map(e=>{const n=dleft(e);return [fmt(e.d),e.d.getFullYear(),e.n,e.cc,e.r,e.title,e.detail,e.status.charAt(0).toUpperCase()+e.status.slice(1),n<0?"":n,n<0?"Past":n<=30?"Within 30 days":n<=90?"Within 90 days":"Later"].concat([]).map(clean).join("\t")});
   return [head.join("\t"),...lines].join("\n");
 }
 document.getElementById("cpy").addEventListener("click",()=>{
   if(!D.length)return;
-  const t=tableTSV(),msg=document.getElementById("xmsg"),box=document.getElementById("cpyBox");
+  const list=filterActive()?D.filter(matches):D,t=tableTSV(list),msg=document.getElementById("xmsg"),box=document.getElementById("cpyBox");
   const fallback=()=>{box.value=t;box.hidden=false;box.focus();box.select();msg.textContent="Press Ctrl+C (Cmd+C on Mac), then paste into Excel."};
-  try{navigator.clipboard.writeText(t).then(()=>{box.hidden=true;msg.textContent="Copied "+D.length+" rows. Paste into Excel with Ctrl+V."},fallback)}catch(_){fallback()}
+  try{navigator.clipboard.writeText(t).then(()=>{box.hidden=true;msg.textContent="Copied "+list.length+" rows"+(filterActive()?" ("+filterLabel()+")":"")+". Paste into Excel with Ctrl+V."},fallback)}catch(_){fallback()}
 });
 
 
+function filters(){return {term:document.getElementById("q").value.trim().toLowerCase(),reg:document.getElementById("region").value,cty:document.getElementById("country").value}}
+function filterActive(){const f=filters();return !!(fs||f.term||f.reg||f.cty)}
+function matches(e){const f=filters();return (!fs||e.status===fs)&&(!f.reg||e.r===f.reg)&&(!f.cty||e.cc===f.cty)&&(!f.term||(e.n+" "+e.cc+" "+e.title+" "+e.detail).toLowerCase().includes(f.term))}
+function filterLabel(){const f=filters(),p=[];if(f.cty)p.push(NAME[f.cty]||f.cty);if(f.reg)p.push(f.reg);if(fs)p.push(fs.charAt(0).toUpperCase()+fs.slice(1));if(f.term)p.push('"'+f.term+'"');return p.join(", ")}
+const xlDate=d=>(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())-Date.UTC(1899,11,30))/864e5;
+function rowObj(e){const n=dleft(e);return {"Date":"","Year":e.d.getFullYear(),"Country":e.n,"Code":e.cc,"Region":e.r,"Milestone":e.title,"Detail":e.detail,
+  "Status":e.status.charAt(0).toUpperCase()+e.status.slice(1),"Days to go":n<0?"":n,"Timing":n<0?"Past":n<=30?"Within 30 days":n<=90?"Within 90 days":"Later"}}
+function milestoneSheet(list){const ws=XLSX.utils.json_to_sheet(list.map(rowObj));
+  list.forEach((e,i)=>{ws[XLSX.utils.encode_cell({r:i+1,c:0})]={t:"n",v:xlDate(e.d),z:"dd-mmm-yyyy"}});
+  ws["!cols"]=[12,7,22,7,13,40,70,13,11,15].map(w=>({wch:w}));ws["!autofilter"]={ref:ws["!ref"]};return ws}
+function countrySummary(){const by=new Map();D.forEach(e=>{if(!by.has(e.cc))by.set(e.cc,[]);by.get(e.cc).push(e)});
+  const list=[...by].map(([cc,arr])=>{const ahead=arr.filter(e=>dleft(e)>=0),nx=ahead[0];
+    return {cc,nx,o:{"Country":NAME[cc]||cc,"Code":cc,"Region":REG[cc]||"Other","Milestones":arr.length,"Past":arr.length-ahead.length,"Still ahead":ahead.length,
+      "Next milestone":nx?nx.title:"None ahead","Next date":"","Days to go":nx?dleft(nx):"","Next status":nx?nx.status.charAt(0).toUpperCase()+nx.status.slice(1):""}}}).sort((a,b)=>a.o.Country.localeCompare(b.o.Country));
+  const ws=XLSX.utils.json_to_sheet(list.map(x=>x.o));
+  list.forEach((x,i)=>{if(x.nx)ws[XLSX.utils.encode_cell({r:i+1,c:7})]={t:"n",v:xlDate(x.nx.d),z:"dd-mmm-yyyy"}});
+  ws["!cols"]=[22,7,13,11,7,11,44,12,11,13].map(w=>({wch:w}));ws["!autofilter"]={ref:ws["!ref"]};return ws}
+
 function syncSeg(){document.querySelectorAll("#seg button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.s===fs))}
 function render(){
-  const term=document.getElementById("q").value.trim().toLowerCase(),reg=document.getElementById("region").value,showPast=document.getElementById("past").checked;
-  const rows=D.filter(e=>(!fs||e.status===fs)&&(!reg||e.r===reg)&&(showPast||dleft(e)>=0)&&(!term||(e.n+" "+e.cc+" "+e.title+" "+e.detail).toLowerCase().includes(term)));
+  const showPast=document.getElementById("past").checked,term=filters().term;
+  const rows=D.filter(e=>matches(e)&&(showPast||dleft(e)>=0));
   document.getElementById("count").textContent=rows.length+" / "+D.length;
-  const w=D.filter(e=>{const n=dleft(e);return n>=0&&n<=90&&(!fs||e.status===fs)&&(!reg||e.r===reg)&&(!term||(e.n+" "+e.cc+" "+e.title+" "+e.detail).toLowerCase().includes(term))});
+  const w=D.filter(e=>{const n=dleft(e);return n>=0&&n<=90&&matches(e)});
   document.getElementById("n90c").textContent=w.length+" milestone"+(w.length===1?"":"s");
   const ws=w.filter(e=>dleft(e)<=30).length,sb=document.getElementById("n90soon");sb.hidden=!ws;sb.textContent=ws+" within 30 days";
   document.getElementById("watch").innerHTML=w.length?w.map(LI).join(""):`<li><span></span><div class="s">Nothing due in the next 90 days for these filters.</div><span></span></li>`;
@@ -337,7 +357,7 @@ document.querySelectorAll(".box > .year-head").forEach(h=>h.addEventListener("cl
   sec.classList.toggle("open",open);h.setAttribute("aria-expanded",open);h.querySelector(".sign").innerHTML=open?"&minus;":"+";sec.querySelector(".year-body").hidden=!open}));
 document.getElementById("expAll").addEventListener("click",()=>{document.querySelectorAll(".year").forEach(s=>OPEN.set(+s.dataset.y,true));render()});
 document.getElementById("colAll").addEventListener("click",()=>{document.querySelectorAll(".year").forEach(s=>OPEN.set(+s.dataset.y,false));render()});
-["q","region","past"].forEach(id=>document.getElementById(id).addEventListener(id==="q"?"input":"change",render));
+["q","region","country","past"].forEach(id=>document.getElementById(id).addEventListener(id==="q"?"input":"change",render));
 
 fetch("data.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(boot)
  .catch(()=>{document.getElementById("list").innerHTML='<div class="empty">Milestone data could not be loaded. Reload the page; if it persists, ask Ajay to republish the tracker.</div>'});
