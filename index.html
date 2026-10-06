@@ -163,8 +163,7 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
 
 <div class="wrap">
   <div class="source">
-    <span>Sources: <a href="https://www.einvoice.global/calendar" target="_blank" rel="noopener">einvoice.global/calendar</a> <span class="role">primary, updated <span id="srcUpd">04 Oct 2026</span></span></span>
-    <span><a href="https://www.cleartax.com/global/e-invoicing-mandates-by-country" target="_blank" rel="noopener">ClearTax mandates by country</a> <span class="role">cross-check, updated <span id="ctUpd">Mar 2026</span></span></span>
+    <span>Source: <a href="https://www.einvoice.global/calendar" target="_blank" rel="noopener">einvoice.global/calendar</a> <span class="role">updated <span id="srcUpd">04 Oct 2026</span></span></span>
     <span class="meta" id="refUpd">Refreshed 06 Oct 2026</span>
   </div>
 
@@ -235,7 +234,6 @@ function boot(data){
   RAW=data;
   D=data.milestones.map(m=>({...m,d:pd(m.date),r:REG[m.cc]||"Other",n:NAME[m.cc]||m.cc})).sort((a,b)=>a.d-b.d);
   document.getElementById("srcUpd").textContent=fmt(pd(data.sourceUpdated));
-  const ct=(data.sources||[]).find(x=>x.name==="ClearTax");if(ct){const c=pd(ct.updated);document.getElementById("ctUpd").textContent=MON[c.getMonth()]+" "+c.getFullYear()}
   document.getElementById("refUpd").textContent="Refreshed "+fmt(pd(data.refreshed));
 
   const fut=D.filter(e=>dleft(e)>=0),n90=fut.filter(e=>dleft(e)<=90);
@@ -270,15 +268,14 @@ async function setupExport(){
     b.disabled=true;msg.textContent="";
     try{
       const rows=D.map(e=>{const n=dleft(e);return {"Date":e.d,"Year":e.d.getFullYear(),"Country":e.n,"Code":e.cc,"Region":e.r,"Milestone":e.title,"Detail":e.detail,
-        "Status":e.status.charAt(0).toUpperCase()+e.status.slice(1),"Days to go":n<0?"":n,"Timing":n<0?"Past":n<=30?"Within 30 days":n<=90?"Within 90 days":"Later",
-        "Source":e.src==="ct"?"ClearTax":"einvoice.global"}});
+        "Status":e.status.charAt(0).toUpperCase()+e.status.slice(1),"Days to go":n<0?"":n,"Timing":n<0?"Past":n<=30?"Within 30 days":n<=90?"Within 90 days":"Later"}});
       const ws=XLSX.utils.json_to_sheet(rows);
-      ws["!cols"]=[12,7,22,7,13,40,70,13,11,15,15].map(w=>({wch:w}));
+      ws["!cols"]=[12,7,22,7,13,40,70,13,11,15].map(w=>({wch:w}));
       ws["!autofilter"]={ref:ws["!ref"]};
       D.forEach((e,i)=>{ws[XLSX.utils.encode_cell({r:i+1,c:0})]={t:"n",v:(Date.UTC(e.d.getFullYear(),e.d.getMonth(),e.d.getDate())-Date.UTC(1899,11,30))/864e5,z:"dd-mmm-yyyy"}});
       const info=XLSX.utils.aoa_to_sheet([["E-Invoicing Mandate Tracker"],[],["Exported",fmt(new Date())],["Data refreshed",fmt(pd(RAW.refreshed))],
-        ["Primary source","https://www.einvoice.global/calendar"],["Primary source updated",fmt(pd(RAW.sourceUpdated))],
-        ["Cross-check source","https://www.cleartax.com/global/e-invoicing-mandates-by-country"],[],["Milestones",D.length],["Still ahead",D.filter(e=>dleft(e)>=0).length],
+        ["Source","https://www.einvoice.global/calendar"],["Source updated",fmt(pd(RAW.sourceUpdated))],
+        [],["Milestones",D.length],["Still ahead",D.filter(e=>dleft(e)>=0).length],
         [],["Note","Consultation dates are indicated, not legislated. Confirm with the tax authority before committing a client go-live."]]);
       info["!cols"]=[{wch:24},{wch:70}];
       const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,"Milestones");XLSX.utils.book_append_sheet(wb,info,"About");
@@ -296,9 +293,9 @@ async function setupExport(){
 }
 setupExport();
 function tableTSV(){
-  const head=["Date","Year","Country","Code","Region","Milestone","Detail","Status","Days to go","Timing","Source"];
+  const head=["Date","Year","Country","Code","Region","Milestone","Detail","Status","Days to go","Timing"];
   const clean=v=>String(v).replace(/[\t\r\n]+/g," ");
-  const lines=D.map(e=>{const n=dleft(e);return [fmt(e.d),e.d.getFullYear(),e.n,e.cc,e.r,e.title,e.detail,e.status.charAt(0).toUpperCase()+e.status.slice(1),n<0?"":n,n<0?"Past":n<=30?"Within 30 days":n<=90?"Within 90 days":"Later",e.src==="ct"?"ClearTax":"einvoice.global"].map(clean).join("\t")});
+  const lines=D.map(e=>{const n=dleft(e);return [fmt(e.d),e.d.getFullYear(),e.n,e.cc,e.r,e.title,e.detail,e.status.charAt(0).toUpperCase()+e.status.slice(1),n<0?"":n,n<0?"Past":n<=30?"Within 30 days":n<=90?"Within 90 days":"Later"].concat([]).map(clean).join("\t")});
   return [head.join("\t"),...lines].join("\n");
 }
 document.getElementById("cpy").addEventListener("click",()=>{
@@ -322,7 +319,7 @@ function render(){
   if(!rows.length){L.innerHTML=`<div class="empty">No milestones match. ${showPast?"":"Tick Show past to include earlier dates, or "}clear the search.</div>`;return}
   const rowHtml=e=>{const n=dleft(e);
       return `<div class="row${e.cc==="AE"?" uae":""}${n<0?" past":""}"><div class="day">${e.d.getDate()}</div>
-      <div class="body"><div class="c">${esc(e.n)}${e.src==="ct"?" · via ClearTax":""}</div><div class="t">${esc(e.title)}</div><p>${esc(e.detail)}</p></div>
+      <div class="body"><div class="c">${esc(e.n)}</div><div class="t">${esc(e.title)}</div><p>${esc(e.detail)}</p></div>
       <div class="side"><span class="tag ${e.status}">${e.status}</span><span class="days ${dayCls(n)}">${dayTxt(n)}</span></div></div>`};
   const years=new Map();rows.forEach(e=>{const y=e.d.getFullYear();if(!years.has(y))years.set(y,new Map());const ym=years.get(y);const m=e.d.getMonth();if(!ym.has(m))ym.set(m,[]);ym.get(m).push(e)});
   const curY=today.getFullYear(),curM=today.getMonth(),forceOpen=!!term;

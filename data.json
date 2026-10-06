@@ -5,7 +5,7 @@
  "changes": [
   {
    "date": "2026-10-06",
-   "text": "ClearTax added as a cross-check source (its page is dated Mar 2026).\nAdded EU ViDA (1 Jul 2030) and 9 countries without fixed dates. 3 outdated ClearTax dates (Spain, Philippines, Slovakia) ignored."
+   "text": "ClearTax removed as a source; EU ViDA (1 Jul 2030) entry removed with it.\n92 milestones across 32 countries."
   },
   {
    "date": "2026-10-06",
@@ -748,14 +748,6 @@
    "detail": "SMEs, sole traders and the rest. Gated on the same pending Order.",
    "status": "upcoming",
    "src": "eg"
-  },
-  {
-   "date": "2030-07-01",
-   "cc": "EU",
-   "title": "ViDA: intra-EU B2B e-invoicing",
-   "detail": "Mandatory e-invoicing and digital reporting for cross-border B2B supplies within the EU under the VAT in the Digital Age package.",
-   "status": "upcoming",
-   "src": "ct"
   }
  ],
  "sources": [
@@ -764,114 +756,6 @@
    "url": "https://www.einvoice.global/calendar",
    "updated": "2026-10-04",
    "role": "Primary"
-  },
-  {
-   "name": "ClearTax",
-   "url": "https://www.cleartax.com/global/e-invoicing-mandates-by-country",
-   "updated": "2026-03-01",
-   "role": "Cross-check"
-  }
- ],
- "undated": [
-  {
-   "cc": "KR",
-   "name": "South Korea",
-   "note": "Live before 2025, per ClearTax. No go-live date given.",
-   "status": "live",
-   "src": "ct"
-  },
-  {
-   "cc": "PT",
-   "name": "Portugal",
-   "note": "Live before 2025, per ClearTax. No go-live date given.",
-   "status": "live",
-   "src": "ct"
-  },
-  {
-   "cc": "HU",
-   "name": "Hungary",
-   "note": "Live before 2025, per ClearTax. No go-live date given.",
-   "status": "live",
-   "src": "ct"
-  },
-  {
-   "cc": "CL",
-   "name": "Chile",
-   "note": "Live before 2025, per ClearTax. No go-live date given.",
-   "status": "live",
-   "src": "ct"
-  },
-  {
-   "cc": "VN",
-   "name": "Vietnam",
-   "note": "Live before 2025, per ClearTax. No go-live date given.",
-   "status": "live",
-   "src": "ct"
-  },
-  {
-   "cc": "TR",
-   "name": "Turkey",
-   "note": "Live before 2025, per ClearTax. No go-live date given.",
-   "status": "live",
-   "src": "ct"
-  },
-  {
-   "cc": "SE",
-   "name": "Sweden (B2G)",
-   "note": "Live before 2025, per ClearTax. No go-live date given.",
-   "status": "live",
-   "src": "ct"
-  },
-  {
-   "cc": "MA",
-   "name": "Morocco",
-   "note": "Planned for 2026 per ClearTax. Exact date not announced.",
-   "status": "upcoming",
-   "src": "ct"
-  },
-  {
-   "cc": "ZA",
-   "name": "South Africa",
-   "note": "Planned per ClearTax. Date to be confirmed.",
-   "status": "consultation",
-   "src": "ct"
-  }
- ],
- "checks": [
-  {
-   "cc": "AE",
-   "result": "matches",
-   "text": "ClearTax July 2026 matches the pilot start on 1 Jul 2026. Mandatory Wave 1 is 1 Jan 2027."
-  },
-  {
-   "cc": "OM",
-   "result": "matches",
-   "text": "ClearTax 2026 matches Phase 1 on 1 Aug 2026."
-  },
-  {
-   "cc": "DE",
-   "result": "matches",
-   "text": "Receive Jan 2025 and send Jan 2027 match on both sources."
-  },
-  {
-   "cc": "FR",
-   "result": "matches",
-   "text": "Sep 2026 (large) and Sep 2027 (SMEs) match on both sources."
-  },
-  {
-   "cc": "BE",
-   "result": "matches",
-   "text": "B2B Jan 2026 matches on both sources."
-  },
-  {
-   "cc": "PL",
-   "result": "matches",
-   "text": "KSeF Feb 2026 matches on both sources."
-  },
-  {
-   "cc": "MY",
-   "result": "matches",
-   "text": "Jan 2025 matches Phase 2 on both sources."
   }
  ]
 }
