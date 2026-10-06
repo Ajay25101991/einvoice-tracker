@@ -1,0 +1,877 @@
+{
+ "source": "https://www.einvoice.global/calendar",
+ "sourceUpdated": "2026-10-04",
+ "refreshed": "2026-10-06",
+ "changes": [
+  {
+   "date": "2026-10-06",
+   "text": "ClearTax added as a cross-check source (its page is dated Mar 2026).\nAdded EU ViDA (1 Jul 2030) and 9 countries without fixed dates. 3 outdated ClearTax dates (Spain, Philippines, Slovakia) ignored."
+  },
+  {
+   "date": "2026-10-06",
+   "text": "Tracker started from the einvoice.global calendar (source dated 04 Oct 2026).\n92 milestones across 32 countries."
+  }
+ ],
+ "milestones": [
+  {
+   "date": "2025-01-01",
+   "cc": "DE",
+   "title": "Receive obligation",
+   "detail": "All domestic B2B taxable persons must be able to receive structured e-invoices.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2025-01-01",
+   "cc": "DE",
+   "title": "Transition allowance",
+   "detail": "Paper and PDF still permitted with recipient consent.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2025-01-01",
+   "cc": "ID",
+   "title": "Coretax migration",
+   "detail": "DJP migrates to Coretax Administration System, the new portal for VAT and e-Faktur. Certificates re-issued; some H2H endpoints updated.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2025-01-01",
+   "cc": "MY",
+   "title": "Phase 2, upper mid-market",
+   "detail": "Annual turnover RM25M to RM100M.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2025-01-01",
+   "cc": "RO",
+   "title": "B2C all",
+   "detail": "All domestic B2C.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2025-04-01",
+   "cc": "IN",
+   "title": "30-day reporting window",
+   "detail": "Invoices must be reported to IRP within 30 days from invoice date.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2025-04-01",
+   "cc": "IT",
+   "title": "FatturaPA v1.9",
+   "detail": "New TD29 notification, RF20 regime, refined controls.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2025-05-01",
+   "cc": "SG",
+   "title": "Soft launch, new voluntary registrants",
+   "detail": "Voluntary participation begins.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2025-05-07",
+   "cc": "GB",
+   "title": "HMRC consultation closed",
+   "detail": "HMRC and DBT joint consultation on the UK regime closed.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2025-05-15",
+   "cc": "AU",
+   "title": "PINT A-NZ sole format",
+   "detail": "PINT A-NZ replaces PEPPOL BIS 3.0 A-NZ as sole supported format.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2025-07-01",
+   "cc": "GR",
+   "title": "B2B mandate, large",
+   "detail": "Large enterprises must issue full e-invoices.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2025-07-01",
+   "cc": "MY",
+   "title": "Phase 3, mid-market",
+   "detail": "Annual turnover RM5M to RM25M.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2025-11-01",
+   "cc": "NG",
+   "title": "Phase 1, large taxpayers",
+   "detail": "Large taxpayers live on MBS; compliance deadline 31 Jul 2026.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2025-11-01",
+   "cc": "QA",
+   "title": "GTA pilot, selected large entities",
+   "detail": "Voluntary pilot with selected large taxpayers on the GTA platform.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2025-11-26",
+   "cc": "GB",
+   "title": "Budget 2025 confirms 2029 mandate",
+   "detail": "Mandatory B2B and B2G e-invoicing for VAT invoices from 1 Apr 2029.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2025-12-01",
+   "cc": "OM",
+   "title": "Draft Data Dictionary circulated",
+   "detail": "OTA shared first technical requirements with selected taxpayers.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2025-12-31",
+   "cc": "SA",
+   "title": "Phase 2 Wave 22",
+   "detail": "Wave 22 integration deadline.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-01-01",
+   "cc": "BE",
+   "title": "B2B mandate",
+   "detail": "All domestic B2B between Belgian VAT-registered persons via Peppol.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-01-01",
+   "cc": "BR",
+   "title": "National NFS-e mandatory",
+   "detail": "All municipalities except Sao Paulo migrate to national standard.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-01-01",
+   "cc": "BR",
+   "title": "IBS/CBS/IS fields operational",
+   "detail": "Tax reform layout with new tax groups via Technical Note 2024.001.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-01-01",
+   "cc": "CN",
+   "title": "VAT Law in force, e-fapiao sole format",
+   "detail": "e-fapiao is the only legal invoice format; delivery via digital tax accounts.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-01-01",
+   "cc": "HR",
+   "title": "Fiskalizacija 2.0",
+   "detail": "Mandatory B2B e-invoicing plus real-time fiscalisation and e-reporting for VAT-registered residents.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-01-01",
+   "cc": "DK",
+   "title": "Digital bookkeeping above DKK 300k",
+   "detail": "Extends to all businesses with turnover above DKK 300,000, including custom systems.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-01-01",
+   "cc": "MY",
+   "title": "Phase 4, SMEs",
+   "detail": "Now RM3M to RM5M turnover (narrowed 1 Sep 2026). Penalty-free relaxation until 31 Dec 2027.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-01-01",
+   "cc": "MX",
+   "title": "2026 tax reform, abbreviated verification",
+   "detail": "SAT can declare CFDIs false; criminal liability for invoice fraud.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-01-01",
+   "cc": "MX",
+   "title": "Cancellation extended to ISR return",
+   "detail": "CFDI cancellation deadline extended to month of annual ISR filing.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-01-01",
+   "cc": "MX",
+   "title": "Digital platforms complement Rev E",
+   "detail": "New complement for platform economy reporting.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-01-01",
+   "cc": "PH",
+   "title": "Wave 3, all large taxpayers",
+   "detail": "Full LTS coverage.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-01-01",
+   "cc": "RO",
+   "title": "Non-resident VAT customers",
+   "detail": "Invoices to non-resident VAT-registered customers via e-Factura within 5 working days.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-01-01",
+   "cc": "GB",
+   "title": "Stakeholder co-design phase",
+   "detail": "HMRC and DBT begin detailed design collaboration.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-02-01",
+   "cc": "OM",
+   "title": "Sandbox live",
+   "detail": "OTA sandbox live; ASPs and large taxpayers begin integration testing.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-02-01",
+   "cc": "PL",
+   "title": "Mandatory, large taxpayers",
+   "detail": "Large VAT taxpayers must issue via KSeF 2.0.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-03-10",
+   "cc": "NL",
+   "title": "B2B mandate proposed",
+   "detail": "Proposed domestic B2B mandate from 1 Jan 2030 (ViDA DRR aligned), EN 16931.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-03-31",
+   "cc": "SA",
+   "title": "Phase 2 Wave 23",
+   "detail": "Wave 23 integration deadline.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-04-01",
+   "cc": "BE",
+   "title": "Penalties active",
+   "detail": "Grace period ends; fines EUR 1,500 to 5,000.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-04-01",
+   "cc": "OM",
+   "title": "PINT-OM specification published",
+   "detail": "Covers invoices, credit notes, self-billing and Tax Data Documents.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-04-01",
+   "cc": "PL",
+   "title": "Mandatory, all VAT",
+   "detail": "All other VAT-registered taxpayers.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-04-01",
+   "cc": "SG",
+   "title": "All new voluntary GST registrants",
+   "detail": "Mandatory for newly incorporated voluntary registrants.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-05-01",
+   "cc": "OM",
+   "title": "ASP registration portal opens",
+   "detail": "ASP paid-up capital cut from OMR 60,000 to OMR 6,000.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-05-06",
+   "cc": "QA",
+   "title": "Draft law approved",
+   "detail": "Approved by Council of Ministers; not yet gazetted, so no obligation binds.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-06-23",
+   "cc": "GB",
+   "title": "Peppol confirmed as core network",
+   "detail": "Ministerial statement names Peppol as the UK interoperability network.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-06-24",
+   "cc": "SK",
+   "title": "Voluntary exchange in production",
+   "detail": "About 5,000 companies exchanging voluntarily.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-06-30",
+   "cc": "SA",
+   "title": "Phase 2 Wave 24",
+   "detail": "Wave 24 integration deadline.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-07-01",
+   "cc": "AU",
+   "title": "30% Peppol target",
+   "detail": "Target: 30% of supplier invoices to non-corporates via Peppol.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-07-01",
+   "cc": "BH",
+   "title": "Expected wave 1, above BHD 1m",
+   "detail": "Indicated, not enacted. Date passed without taking effect; programme has slipped.",
+   "status": "consultation",
+   "src": "eg"
+  },
+  {
+   "date": "2026-07-01",
+   "cc": "NG",
+   "title": "Phase 2, medium taxpayers",
+   "detail": "Medium taxpayers live; enforcement Jan to Mar 2027.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-07-01",
+   "cc": "AE",
+   "title": "Pilot phase",
+   "detail": "Pilot under FTA supervision with selected stakeholders and accredited ASPs. Others may adopt voluntarily.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-07-17",
+   "cc": "LU",
+   "title": "Bill 8815 approved by government",
+   "detail": "Phased domestic B2B e-invoicing draft law approved; not yet enacted.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-08-01",
+   "cc": "OM",
+   "title": "Phase 1, top ~100 large taxpayers",
+   "detail": "Notified large taxpayers must issue via accredited ASPs.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-09-01",
+   "cc": "FR",
+   "title": "Phase 1, issue + receive + e-reporting",
+   "detail": "Issue obligation begins; all businesses must be able to receive.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-09-01",
+   "cc": "MY",
+   "title": "Exemption threshold raised to RM3M",
+   "detail": "MSMEs below RM3M permanently exempt (Guideline v4.8).",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-09-30",
+   "cc": "PL",
+   "title": "Small-business paper relief ends",
+   "detail": "Small businesses must now issue through KSeF.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-10-01",
+   "cc": "JP",
+   "title": "Transitional ITC (50%)",
+   "detail": "50% input tax credit for unregistered suppliers.",
+   "status": "live",
+   "src": "eg"
+  },
+  {
+   "date": "2026-10-04",
+   "cc": "KW",
+   "title": "No mandate announced",
+   "detail": "No obligation exists; VAT not yet implemented.",
+   "status": "voluntary",
+   "src": "eg"
+  },
+  {
+   "date": "2026-10-30",
+   "cc": "AE",
+   "title": "ASP appointment deadline (extended)",
+   "detail": "Taxpayers with revenue of AED 50M or more must appoint an MoF-accredited ASP via EmaraTax.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2026-11-01",
+   "cc": "GB",
+   "title": "Implementation roadmap (Budget 2026)",
+   "detail": "Full roadmap and technical standards to be published.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2026-11-02",
+   "cc": "GR",
+   "title": "B2B mandate, second period",
+   "detail": "Smaller enterprises begin; mixed systems allowed until 31 Jan 2027.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2026-12-01",
+   "cc": "BR",
+   "title": "NF-e for non-ICMS IBS/CBS taxpayers",
+   "detail": "New NF-e model becomes mandatory (Joint Act RFB/CGIBS 4/2026).",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2026-12-31",
+   "cc": "AU",
+   "title": "Full automation target",
+   "detail": "Full e-invoicing automation across Commonwealth.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2026-12-31",
+   "cc": "PH",
+   "title": "Full B2B coverage",
+   "detail": "Mandatory structured e-invoices and receipts for covered taxpayers (RR 26-2025).",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2026-12-31",
+   "cc": "PL",
+   "title": "Offline mode relief ends",
+   "detail": "From 2027 an invoice not delivered to KSeF is not valid.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2027-01-01",
+   "cc": "BH",
+   "title": "Expected wave 2, above BHD 500k",
+   "detail": "Expected, not legislated; wave 1 already slipped.",
+   "status": "consultation",
+   "src": "eg"
+  },
+  {
+   "date": "2027-01-01",
+   "cc": "DE",
+   "title": "Issue obligation, large",
+   "detail": "Issuers above threshold must send EN 16931-compliant invoices.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2027-01-01",
+   "cc": "GR",
+   "title": "e-Delivery Phase B",
+   "detail": "Loading, transshipment and receipt data mandatory. Postponed from 12 Oct 2026.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2027-01-01",
+   "cc": "NO",
+   "title": "B2B issuance mandate",
+   "detail": "EHF 3.0 e-invoices for domestic B2B where recipient is in ELMA.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2027-01-01",
+   "cc": "PL",
+   "title": "Mandatory, micro",
+   "detail": "Smallest taxpayers join KSeF.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2027-01-01",
+   "cc": "QA",
+   "title": "Expected go-live",
+   "detail": "Staggered rollout by size. Not legislated; depends on gazettal.",
+   "status": "consultation",
+   "src": "eg"
+  },
+  {
+   "date": "2027-01-01",
+   "cc": "SK",
+   "title": "Mandatory B2B and B2G",
+   "detail": "All Slovak VAT taxpayers issue and receive structured e-invoices.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2027-01-01",
+   "cc": "ES",
+   "title": "Verifactu, Corp Tax payers",
+   "detail": "Certified billing software (SIF) mandatory.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2027-01-01",
+   "cc": "AE",
+   "title": "Wave 1, large taxpayers",
+   "detail": "Mandatory B2B and B2G e-invoicing via Peppol 5-corner / DCTCE.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2027-02-01",
+   "cc": "GR",
+   "title": "B2B, accredited providers only",
+   "detail": "Transition ends for second-period businesses.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2027-02-01",
+   "cc": "SA",
+   "title": "Phase 2 Wave 25",
+   "detail": "Threshold halved from Wave 24's SAR 375k. ZATCA notifies directly.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2027-03-01",
+   "cc": "DK",
+   "title": "Next phase (deferred)",
+   "detail": "Next stage of digital bookkeeping; single Peppol spec planned by mid-2028.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2027-03-31",
+   "cc": "AE",
+   "title": "ASP appointment deadline, below AED 50M",
+   "detail": "Taxpayers below AED 50M revenue must appoint an MoF-accredited ASP.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2027-04-01",
+   "cc": "OM",
+   "title": "Wave 1, supplies above OMR 5m",
+   "detail": "Statutory deadline under Decision 189/2026.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2027-07-01",
+   "cc": "NG",
+   "title": "Phase 3, small and emerging",
+   "detail": "Remaining taxpayers live; enforcement Jan to Mar 2028.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2027-07-01",
+   "cc": "ES",
+   "title": "Verifactu, others",
+   "detail": "Self-employed and other VAT taxpayers.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2027-07-01",
+   "cc": "AE",
+   "title": "Wave 2, all other businesses",
+   "detail": "All VAT-registered businesses regardless of revenue.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2027-09-01",
+   "cc": "FR",
+   "title": "Phase 2, SMEs and TPEs",
+   "detail": "Issue obligation extends to all remaining VAT-registered businesses.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2027-10-01",
+   "cc": "OM",
+   "title": "Wave 2, at or below OMR 5m",
+   "detail": "All remaining VAT-registered persons in scope.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2027-10-01",
+   "cc": "ES",
+   "title": "Crea y Crece B2B (large)",
+   "detail": "Turnover above EUR 8M. Ministerial Order still pending, may move.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2027-10-01",
+   "cc": "AE",
+   "title": "Wave 3, government",
+   "detail": "Government departments and federal entities in scope.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2027-12-31",
+   "cc": "MY",
+   "title": "Phase 4 relaxation ends",
+   "detail": "Penalty-free period ends (Guideline v4.7).",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2028-01-01",
+   "cc": "BE",
+   "title": "E-Reporting (DRR)",
+   "detail": "Near-real-time e-reporting, aligned with EU ViDA.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2028-01-01",
+   "cc": "DE",
+   "title": "Issue obligation, all B2B",
+   "detail": "All B2B issuers must send structured e-invoices.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2028-01-01",
+   "cc": "GR",
+   "title": "TARIC product classification",
+   "detail": "TARIC-based product coding mandatory. Postponed from 1 Jan 2027.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2028-01-01",
+   "cc": "LU",
+   "title": "B2B receive obligation",
+   "detail": "All in-scope businesses must be able to receive.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2028-01-01",
+   "cc": "MY",
+   "title": "Full enforcement",
+   "detail": "Section 120 penalties RM200 to 20,000 per non-compliant invoice.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2028-01-01",
+   "cc": "PL",
+   "title": "Penalties begin",
+   "detail": "Deferred from 1 Jan 2027; KSeF obligation itself unchanged.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2028-04-01",
+   "cc": "SG",
+   "title": "New compulsory + smaller existing",
+   "detail": "Phased extension to existing registrants.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2028-07-01",
+   "cc": "LU",
+   "title": "B2B issue, large and medium",
+   "detail": "Large and medium businesses must issue structured e-invoices.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2028-10-01",
+   "cc": "ES",
+   "title": "Crea y Crece B2B (all)",
+   "detail": "SMEs, sole traders and the rest. Gated on the same pending Order.",
+   "status": "upcoming",
+   "src": "eg"
+  },
+  {
+   "date": "2030-07-01",
+   "cc": "EU",
+   "title": "ViDA: intra-EU B2B e-invoicing",
+   "detail": "Mandatory e-invoicing and digital reporting for cross-border B2B supplies within the EU under the VAT in the Digital Age package.",
+   "status": "upcoming",
+   "src": "ct"
+  }
+ ],
+ "sources": [
+  {
+   "name": "einvoice.global",
+   "url": "https://www.einvoice.global/calendar",
+   "updated": "2026-10-04",
+   "role": "Primary"
+  },
+  {
+   "name": "ClearTax",
+   "url": "https://www.cleartax.com/global/e-invoicing-mandates-by-country",
+   "updated": "2026-03-01",
+   "role": "Cross-check"
+  }
+ ],
+ "undated": [
+  {
+   "cc": "KR",
+   "name": "South Korea",
+   "note": "Live before 2025, per ClearTax. No go-live date given.",
+   "status": "live",
+   "src": "ct"
+  },
+  {
+   "cc": "PT",
+   "name": "Portugal",
+   "note": "Live before 2025, per ClearTax. No go-live date given.",
+   "status": "live",
+   "src": "ct"
+  },
+  {
+   "cc": "HU",
+   "name": "Hungary",
+   "note": "Live before 2025, per ClearTax. No go-live date given.",
+   "status": "live",
+   "src": "ct"
+  },
+  {
+   "cc": "CL",
+   "name": "Chile",
+   "note": "Live before 2025, per ClearTax. No go-live date given.",
+   "status": "live",
+   "src": "ct"
+  },
+  {
+   "cc": "VN",
+   "name": "Vietnam",
+   "note": "Live before 2025, per ClearTax. No go-live date given.",
+   "status": "live",
+   "src": "ct"
+  },
+  {
+   "cc": "TR",
+   "name": "Turkey",
+   "note": "Live before 2025, per ClearTax. No go-live date given.",
+   "status": "live",
+   "src": "ct"
+  },
+  {
+   "cc": "SE",
+   "name": "Sweden (B2G)",
+   "note": "Live before 2025, per ClearTax. No go-live date given.",
+   "status": "live",
+   "src": "ct"
+  },
+  {
+   "cc": "MA",
+   "name": "Morocco",
+   "note": "Planned for 2026 per ClearTax. Exact date not announced.",
+   "status": "upcoming",
+   "src": "ct"
+  },
+  {
+   "cc": "ZA",
+   "name": "South Africa",
+   "note": "Planned per ClearTax. Date to be confirmed.",
+   "status": "consultation",
+   "src": "ct"
+  }
+ ],
+ "checks": [
+  {
+   "cc": "AE",
+   "result": "matches",
+   "text": "ClearTax July 2026 matches the pilot start on 1 Jul 2026. Mandatory Wave 1 is 1 Jan 2027."
+  },
+  {
+   "cc": "OM",
+   "result": "matches",
+   "text": "ClearTax 2026 matches Phase 1 on 1 Aug 2026."
+  },
+  {
+   "cc": "DE",
+   "result": "matches",
+   "text": "Receive Jan 2025 and send Jan 2027 match on both sources."
+  },
+  {
+   "cc": "FR",
+   "result": "matches",
+   "text": "Sep 2026 (large) and Sep 2027 (SMEs) match on both sources."
+  },
+  {
+   "cc": "BE",
+   "result": "matches",
+   "text": "B2B Jan 2026 matches on both sources."
+  },
+  {
+   "cc": "PL",
+   "result": "matches",
+   "text": "KSeF Feb 2026 matches on both sources."
+  },
+  {
+   "cc": "MY",
+   "result": "matches",
+   "text": "Jan 2025 matches Phase 2 on both sources."
+  }
+ ]
+}
