@@ -1,7 +1,15 @@
 {
  "source": "https://www.einvoice.global/calendar",
  "sourceUpdated": "2026-10-04",
- "refreshed": "2026-10-07",
+ "refreshed": "2026-10-10",
+ "sources": [
+  {
+   "name": "einvoice.global",
+   "url": "https://www.einvoice.global/calendar",
+   "updated": "2026-10-04",
+   "role": "Primary"
+  }
+ ],
  "changes": [
   {
    "date": "2026-10-06",
@@ -750,12 +758,22 @@
    "src": "eg"
   }
  ],
- "sources": [
-  {
-   "name": "einvoice.global",
-   "url": "https://www.einvoice.global/calendar",
-   "updated": "2026-10-04",
-   "role": "Primary"
-  }
+ "reminded90": [
+  "2026-10-30|AE|ASP appointment deadline (extended)",
+  "2026-11-01|GB|Implementation roadmap (Budget 2026)",
+  "2026-11-02|GR|B2B mandate, second period",
+  "2026-12-01|BR|NF-e for non-ICMS IBS/CBS taxpayers",
+  "2026-12-31|AU|Full automation target",
+  "2026-12-31|PH|Full B2B coverage",
+  "2026-12-31|PL|Offline mode relief ends",
+  "2027-01-01|AE|Wave 1, large taxpayers",
+  "2027-01-01|BH|Expected wave 2, above BHD 500k",
+  "2027-01-01|DE|Issue obligation, large",
+  "2027-01-01|ES|Verifactu, Corp Tax payers",
+  "2027-01-01|GR|e-Delivery Phase B",
+  "2027-01-01|NO|B2B issuance mandate",
+  "2027-01-01|PL|Mandatory, micro",
+  "2027-01-01|QA|Expected go-live",
+  "2027-01-01|SK|Mandatory B2B and B2G"
  ]
 }
